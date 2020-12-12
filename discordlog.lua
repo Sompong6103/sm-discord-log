@@ -9,8 +9,7 @@ function sanitize(string)
 end
 
 AddEventHandler('chatMessage', function(source, name, msg)
-    local xPlayer  = ESX.GetPlayerFromId(source)    
-    sendToDiscord(xPlayer.name.." ใด้พิม ".. msg .."", Config['Send_basic']['chat'].color, source, Config['Send_basic']['chat'].webhook)
+   sendToDiscord(sanitize(GetPlayerName(source)).." ใด้พิม ".. msg .."", Config['Send_basic']['chat'].color, source, Config['Send_basic']['chat'].webhook)
 end)
 
 AddEventHandler("playerConnecting", function(name, setReason, deferrals)
